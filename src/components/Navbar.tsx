@@ -48,12 +48,14 @@ const Navbar = () => {
           >
             DOCS
           </Link>
-          <a
-            href="#console"
-            className="text-sm font-bold text-neon-cyan border-b border-transparent hover:border-neon-cyan transition-all"
+          <Link
+            to="/dashboard"
+            className={`text-sm font-bold border-b transition-all ${
+              isActive("/dashboard") ? "text-neon-cyan border-neon-cyan" : "text-neon-cyan border-transparent hover:border-neon-cyan"
+            }`}
           >
             CONSOLE
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
