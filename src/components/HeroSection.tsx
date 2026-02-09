@@ -27,7 +27,7 @@ const HeroSection = () => {
 
         {/* Subheadline */}
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/60 mb-12 font-mono-tech leading-relaxed">
-          Vouch provides the missing trust layer for AI. Identity verification via{" "}
+          Fob provides the missing trust layer for AI. Identity verification via{" "}
           <span className="text-neon-cyan">Passport</span>, spending guardrails via{" "}
           <span className="text-neon-magenta">Mandates</span>, and seamless payments through{" "}
           <span className="text-neon-lime">MCP</span>.

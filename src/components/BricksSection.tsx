@@ -4,7 +4,7 @@ const BricksSection = () => {
   const bricks = [
     {
       icon: Fingerprint,
-      title: "Vouch Passport",
+      title: "Fob Passport",
       description:
         "Cryptographic identity verification for agents. Uses W3C Verifiable Credentials to prove origin, owner, and compliance without sacrificing privacy.",
       features: ["ZK-Proof Identity", "Multi-chain DIDs"],
