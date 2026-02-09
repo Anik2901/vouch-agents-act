@@ -1,15 +1,17 @@
 import { Terminal, UserCheck, KeyRound } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTAGridSection = () => {
   const ctaItems = [
     {
       label: "For Developers",
-      title: "Integrate Vouch",
+      title: "Integrate Fob",
       description:
-        "Deploy the Vouch SDK in minutes. Connect your agents to the economy with full spend control and verified identity.",
+        "Deploy the Fob SDK in minutes. Connect your agents to the economy with full spend control and verified identity.",
       buttonText: "View Documentation",
       buttonIcon: Terminal,
       color: "cyan" as const,
+      href: "/sdk",
     },
     {
       label: "For Individuals",
@@ -19,6 +21,7 @@ const CTAGridSection = () => {
       buttonText: "Claim Passport",
       buttonIcon: UserCheck,
       color: "magenta" as const,
+      href: "/verify",
     },
     {
       label: "For Enterprises",
@@ -28,6 +31,7 @@ const CTAGridSection = () => {
       buttonText: "Request Access",
       buttonIcon: KeyRound,
       color: "lime" as const,
+      href: "#",
     },
   ];
 
@@ -61,10 +65,10 @@ const CTAGridSection = () => {
                 {item.title}
               </h4>
               <p className="text-white/50 mb-10 text-sm">{item.description}</p>
-              <a href="#" className={buttonClasses[item.color]}>
+              <Link to={item.href} className={buttonClasses[item.color]}>
                 {item.buttonText}
                 <item.buttonIcon className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           ))}
         </div>

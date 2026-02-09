@@ -1,4 +1,5 @@
 import { ShieldCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const footerLinks = [
@@ -13,7 +14,7 @@ const Footer = () => {
     {
       title: "Resources",
       links: [
-        { label: "SDK Docs", href: "#" },
+        { label: "SDK Docs", href: "/sdk" },
         { label: "API Spec", href: "#" },
         { label: "GitHub", href: "#" },
       ],
@@ -32,17 +33,17 @@ const Footer = () => {
     <footer className="py-20 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-6 h-6 bg-white flex items-center justify-center rounded-md">
               <ShieldCheck className="w-3.5 h-3.5 text-black" />
             </div>
-            <span className="font-display text-lg tracking-tighter">VOUCH</span>
-          </div>
+            <span className="font-display text-lg tracking-tighter">FOB</span>
+          </Link>
           <p className="text-xs font-mono-tech text-white/40 tracking-widest uppercase">
             The Trust Layer for AI Agents.
           </p>
           <p className="text-xs text-white/20">
-            © 2024 Vouch Framework. All rights reserved.
+            © 2024 Fob Framework. All rights reserved.
           </p>
         </div>
 
