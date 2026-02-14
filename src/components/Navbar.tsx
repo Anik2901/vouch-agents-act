@@ -33,12 +33,14 @@ const Navbar = () => {
           >
             End Users
           </Link>
-          <a
-            href="#api"
-            className="px-4 py-2 rounded-full hover:text-neon-lime transition-colors"
+          <Link
+            to="/mandates"
+            className={`px-4 py-2 rounded-full transition-colors ${
+              isActive("/mandates") ? "text-neon-lime bg-white/10" : "hover:text-neon-lime"
+            }`}
           >
-            API Access
-          </a>
+            Mandates
+          </Link>
         </div>
 
         <div className="flex items-center gap-6">

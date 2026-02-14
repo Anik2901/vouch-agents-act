@@ -221,7 +221,7 @@ const Dashboard = () => {
                 ))}
               </div>
               <Link
-                to="#"
+                to="/mandates"
                 className="mt-8 w-full block text-center py-3 border border-white/10 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-white/5 transition-colors"
               >
                 Manage Mandates
