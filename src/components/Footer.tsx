@@ -1,5 +1,6 @@
 import { ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const footerLinks = [
@@ -30,9 +31,21 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-20 px-6 border-t border-white/5">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.8 }}
+      className="py-20 px-6 border-t border-white/5"
+    >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-        <div className="flex flex-col gap-4">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex flex-col gap-4"
+        >
           <Link to="/" className="flex items-center gap-2">
             <div className="w-6 h-6 bg-white flex items-center justify-center rounded-md">
               <ShieldCheck className="w-3.5 h-3.5 text-black" />
@@ -45,9 +58,15 @@ const Footer = () => {
           <p className="text-xs text-white/20">
             © 2024 Fob Framework. All rights reserved.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-wrap gap-x-12 gap-y-6">
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap gap-x-12 gap-y-6"
+        >
           {footerLinks.map((section) => (
             <div key={section.title} className="flex flex-col gap-3">
               <span className="text-[10px] font-bold uppercase tracking-widest opacity-30">
@@ -64,9 +83,9 @@ const Footer = () => {
               ))}
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

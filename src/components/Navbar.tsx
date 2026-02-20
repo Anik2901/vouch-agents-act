@@ -1,6 +1,7 @@
 import { ShieldCheck } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const location = useLocation();
@@ -9,7 +10,12 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
   
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4">
+    <motion.nav
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4"
+    >
       <div className="glass-card rounded-full px-6 py-3 flex items-center justify-between border-white/10">
         <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-primary flex items-center justify-center rounded-lg">
@@ -71,7 +77,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

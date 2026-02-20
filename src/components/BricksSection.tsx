@@ -1,4 +1,5 @@
 import { Fingerprint, Lock, Zap, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 const BricksSection = () => {
   const bricks = [
@@ -55,28 +56,48 @@ const BricksSection = () => {
   return (
     <section id="bricks" className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-20">
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-20"
+        >
           <h2 className="text-4xl md:text-5xl font-display uppercase mb-4">
             The Three Bricks
           </h2>
           <p className="text-white/40 font-mono-tech max-w-xl">
             A complete infrastructure stack for the agentic economy.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {bricks.map((brick) => {
+          {bricks.map((brick, index) => {
             const colors = colorClasses[brick.color];
             return (
-              <div
+              <motion.div
                 key={brick.title}
-                className={`glass-card rounded-3xl p-8 ${colors.neonBorder} group`}
+                initial={{ opacity: 0, y: 60, rotateX: 8 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.15,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className={`glass-card rounded-3xl p-8 ${colors.neonBorder} group cursor-default`}
+                style={{ transformPerspective: 800 }}
               >
-                <div
+                <motion.div
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 + index * 0.15 }}
                   className={`w-14 h-14 rounded-2xl ${colors.bg} flex items-center justify-center mb-8 border ${colors.border} ${colors.hoverBg} group-hover:text-black transition-all`}
                 >
                   <brick.icon className="w-7 h-7" />
-                </div>
+                </motion.div>
                 <h3 className="text-2xl font-display uppercase mb-4">
                   {brick.title}
                 </h3>
@@ -98,7 +119,7 @@ const BricksSection = () => {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
