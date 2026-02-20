@@ -1,5 +1,6 @@
 import { Terminal, UserCheck, KeyRound } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const CTAGridSection = () => {
   const ctaItems = [
@@ -50,10 +51,24 @@ const CTAGridSection = () => {
   return (
     <section id="cta-grid" className="py-20 px-6 bg-white/5">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-3 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10">
-          {ctaItems.map((item) => (
-            <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="grid lg:grid-cols-3 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10"
+        >
+          {ctaItems.map((item, index) => (
+            <motion.div
               key={item.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.12,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="p-12 bg-black hover:bg-black/80 transition-all"
             >
               <span
@@ -69,9 +84,9 @@ const CTAGridSection = () => {
                 {item.buttonText}
                 <item.buttonIcon className="w-4 h-4" />
               </Link>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
