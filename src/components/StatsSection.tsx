@@ -1,4 +1,36 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+
+const useCountUp = (end: number, duration: number, isInView: boolean, prefix = "", suffix = "") => {
+  const [display, setDisplay] = useState(`${prefix}0${suffix}`);
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const startTime = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / (duration * 1000), 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = start + (end - start) * eased;
+
+      if (end >= 1000) {
+        setDisplay(`${prefix}${(current / 1000).toFixed(1)}K+${suffix}`);
+      } else if (end % 1 !== 0) {
+        setDisplay(`${prefix}${current.toFixed(1)}M${suffix}`);
+      } else {
+        setDisplay(`${prefix}${Math.round(current)}${suffix}`);
+      }
+
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  }, [isInView, end, duration, prefix, suffix]);
+
+  return display;
+};
 
 const container = {
   hidden: {},
@@ -11,8 +43,14 @@ const item = {
 };
 
 const StatsSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  const volume = useCountUp(12.4, 1.5, isInView, "$");
+  const dids = useCountUp(450000, 1.8, isInView);
+
   return (
-    <section className="py-12 border-y border-white/5 bg-black/40">
+    <section className="py-12 border-y border-white/5 bg-black/40" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           variants={container}
@@ -22,13 +60,13 @@ const StatsSection = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center"
         >
           <motion.div variants={item} className="flex flex-col items-center md:items-start">
-            <span className="text-3xl font-display">$12.4M</span>
+            <span className="text-3xl font-display font-mono-tech">{volume}</span>
             <span className="text-[10px] uppercase font-bold tracking-widest text-neon-cyan">
               Settled Volume
             </span>
           </motion.div>
           <motion.div variants={item} className="flex flex-col items-center md:items-start">
-            <span className="text-3xl font-display">450K+</span>
+            <span className="text-3xl font-display font-mono-tech">{dids}</span>
             <span className="text-[10px] uppercase font-bold tracking-widest text-neon-magenta">
               Verified DIDs
             </span>
