@@ -6,14 +6,14 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   const location = useLocation();
   const { user } = useAuth();
-  
+
   const isActive = (path: string) => location.pathname === path;
-  
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4"
     >
       <div className="glass-card rounded-full px-6 py-3 flex items-center justify-between border-white/10">
@@ -52,6 +52,14 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-6">
+          {/* System Active indicator */}
+          <div className="hidden md:flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-neon-lime animate-pulse-glow" />
+            <span className="text-[9px] font-mono-tech uppercase tracking-widest text-white/40 font-bold">
+              System Active
+            </span>
+          </div>
+
           <Link
             to="/sdk"
             className="text-sm font-bold border-b border-transparent hover:border-foreground transition-all"
@@ -62,7 +70,9 @@ const Navbar = () => {
             <Link
               to="/dashboard"
               className={`text-sm font-bold border-b transition-all ${
-                isActive("/dashboard") ? "text-neon-cyan border-neon-cyan" : "text-neon-cyan border-transparent hover:border-neon-cyan"
+                isActive("/dashboard")
+                  ? "text-neon-cyan border-neon-cyan"
+                  : "text-neon-cyan border-transparent hover:border-neon-cyan"
               }`}
             >
               CONSOLE
