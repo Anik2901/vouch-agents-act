@@ -5,6 +5,7 @@ import BricksSection from "@/components/BricksSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import DashboardSimulator from "@/components/DashboardSimulator";
 import IdentityPortalPreview from "@/components/IdentityPortalPreview";
+import WaitlistSection from "@/components/WaitlistSection";
 import CTAGridSection from "@/components/CTAGridSection";
 import Footer from "@/components/Footer";
 import Scanline from "@/components/Scanline";
@@ -24,6 +25,7 @@ const Index = () => {
         <HowItWorksSection />
         <DashboardSimulator />
         <IdentityPortalPreview />
+        <WaitlistSection />
         <CTAGridSection />
       </main>
 
