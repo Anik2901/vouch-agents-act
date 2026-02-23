@@ -23,7 +23,7 @@ const Navbar = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4"
+        className="fixed top-6 left-0 right-0 mx-auto z-50 w-full max-w-4xl px-4"
       >
         <div className="glass-card rounded-full px-6 py-3 flex items-center justify-between border-white/10">
           <Link to="/" className="flex items-center gap-2">
